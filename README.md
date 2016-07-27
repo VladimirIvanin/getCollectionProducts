@@ -29,7 +29,7 @@ function getCollectionProducts(name, count, params) {
         }
       })
       .fail(function( error ) {
-        dfd.reject( error.responseText );
+        dfd.reject( error );
       })
   }
   return dfd.promise();
