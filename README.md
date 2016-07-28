@@ -16,9 +16,9 @@ function getCollectionProducts(name, count, params) {
   var _pagePag = Math.ceil(count / 100);
   var _size = '&page_size=100';
   var _products = []
-
+  
+  var _index = 1;
   for (var i = 0; i < _pagePag; i++) {
-    var _index = i + 1;
     var _page = '&page=' + _index;
     var _param = params + _page + _size;
     $.when( getCollectionList('all', _param) )
@@ -27,6 +27,7 @@ function getCollectionProducts(name, count, params) {
         if (_index == _pagePag) {
           dfd.resolve( _products );
         }
+        _index++;
       })
       .fail(function( error ) {
         dfd.reject( error );
