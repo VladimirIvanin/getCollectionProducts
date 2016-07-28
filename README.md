@@ -19,7 +19,8 @@ function getCollectionProducts(name, count, params) {
   
   var _index = 1;
   for (var i = 0; i < _pagePag; i++) {
-    var _page = '&page=' + _index;
+    var _i = i + 1;
+    var _page = '&page=' + _i;
     var _param = params + _page + _size;
     $.when( getCollectionList('all', _param) )
       .done(function( products ) {
