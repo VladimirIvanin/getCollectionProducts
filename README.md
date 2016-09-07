@@ -1,6 +1,6 @@
 # getCollectionProducts
 
-Получаем массив продуктов
+Получаем массив продуктов из коллекции. 
 
 ```js
 $.when(getCollectionProducts('all', {{collections.all.products.size}}, '')).done(function (products) {
