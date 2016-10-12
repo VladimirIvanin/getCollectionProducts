@@ -2,6 +2,12 @@
 
 Получаем массив продуктов из коллекции. 
 
+## Аргументы
+
+- `name` handle коллекции
+- `count` колличество товаров в коллекции
+- `params` параметры для запроса, например для фильтрации по характеристикам
+
 ```js
 $.when(getCollectionProducts('all', {{collections.all.products.size}}, '')).done(function (products) {
   console.log(products);
