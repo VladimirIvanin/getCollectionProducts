@@ -28,7 +28,7 @@ function getCollectionProducts(name, count, params) {
     var _i = i + 1;
     var _page = '&page=' + _i;
     var _param = params + _page + _size;
-    $.when( getCollectionList('all', _param) )
+    $.when( getCollectionList(name, _param) )
       .done(function( products ) {
         $.merge(_products, products);
         if (_index == _pagePag) {
