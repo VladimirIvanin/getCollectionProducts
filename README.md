@@ -35,50 +35,6 @@ function getCollectionProducts(handle, count_product, filter) {
 
   function _getCollectionProducts(handle, count_product, _filter) {
     var dfd = jQuery.Deferred();
-    var sizeIsFull = (typeof _size == 'string') && count_product === 'full';
-    var size = (sizeIsFull) ? false : count_product;
-    var _pagePag = Math.ceil(size / 100);
-    var _size = '&page_size=100';
-    if (!sizeIsFull && count_product < 100) {
-      _size = '&page_size=' + count_product;
-    }
-    var _products = [];
-    var filter = _filter || '';
-    if (typeof filter == 'object') {
-      filter = $.param(filter);
-    }
-
-    if (!sizeIsFull) {
-      var _index = 1;
-      for (var i = 0; i < _pagePag; i++) {
-        var _i = i + 1;
-        var _page = '&page=' + _i;
-        var _param = filter + _page + _size;
-        $.when( _getCollectionList(handle, _param) )
-        .done(function( _collection ) {
-          $.merge(_products, _collection.products);
-          if (_index == _pagePag) {
-            dfd.resolve( _products );
-          }
-          _index++;
-        })
-        .fail(function( error ) {
-          dfd.reject( error );
-        })
-      }
-    }
-
-    if (sizeIsFull) {
-      var _pageOne = '&page=1';
-      var _param = filter + _pageOne + _size;
-      $.when( _getCollectionList(handle, _param) )
-      .done(function( _collection ) {
-        $.merge(_products, _collection.products);
-function getCollectionProducts(handle, count_product, filter) {
-  return $.when(_getCollectionProducts (handle, count_product, filter));
-
-  function _getCollectionProducts(handle, count_product, _filter) {
-    var dfd = jQuery.Deferred();
     var sizeIsFull = (typeof count_product == 'string') && count_product === 'full';
     var size = (sizeIsFull) ? false : count_product;
     var _pagePag = Math.ceil(size / 100);
@@ -91,8 +47,6 @@ function getCollectionProducts(handle, count_product, filter) {
     if (typeof filter == 'object') {
       filter = $.param(filter);
     }
-
-    console.log(filter, sizeIsFull);
 
     if (!sizeIsFull) {
       var _index = 1;
@@ -170,4 +124,5 @@ function getCollectionProducts(handle, count_product, filter) {
     return dfd.promise();
   }
 }
+
 ```
