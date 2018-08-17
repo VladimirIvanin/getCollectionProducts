@@ -110,7 +110,7 @@ function getCollectionProducts(handle, count_product, filter) {
 
     $.ajax({
       url: '/collection/' +handle+ '.json',
-      type: 'POST',
+      type: 'GET',
       dataType: 'json',
       data: param
     })
